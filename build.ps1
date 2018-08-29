@@ -1,4 +1,12 @@
 cl id.c
 ./id
 
-ls variable:*
+
+cmd /c set
+
+gcc id.c
+./id
+
+clang id.c
+./id
+
