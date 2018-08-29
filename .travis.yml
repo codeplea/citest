@@ -10,7 +10,12 @@ compiler:
   - gcc
 
 script:
-  - mkdir build
-  - cd build
+  - mkdir buildc
+  - cd buildc
   - cmake ..
+  - cmake --build .
+  - cd ..
+  - mkdir buildcxx
+  - cd buildcxx
+  - cmake -DFORCECXX=ON ..
   - cmake --build .
