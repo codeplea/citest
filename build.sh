@@ -20,3 +20,4 @@ echo
 
 which gcc
 which clang
+ls -al /usr/bin
