@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/codeplea/citest.svg?branch=master)](https://travis-ci.org/codeplea/citest)
+
 [![Build status](https://ci.appveyor.com/api/projects/status/ik23a77o4v9003bi?svg=true)](https://ci.appveyor.com/project/codeplea/citest)
 
 
