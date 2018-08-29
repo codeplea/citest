@@ -28,3 +28,5 @@ del ./id.exe
 
 
 del id.cpp
+
+ls
