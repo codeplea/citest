@@ -18,5 +18,13 @@ del ./id.exe
 del ./id.exe
 
 
+& "C:\Program Files\LLVM\bin\clang" id.c -o id.exe
+./id.exe
+del ./id.exe
+
+& "C:\Program Files\LLVM\bin\clang" id.cpp -o id.exe
+./id.exe
+del ./id.exe
+
 
 del id.cpp
