@@ -1,3 +1,6 @@
+# https://www.appveyor.com/docs/appveyor-yml/
+
+
 image:
   - ubuntu
   - Visual Studio 2013
@@ -7,3 +10,10 @@ image:
 platform:
   - x86
   - x64
+
+
+build:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
