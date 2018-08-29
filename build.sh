@@ -1,7 +1,7 @@
 SRC=id
 
 # https://github.com/travis-ci/travis-ci/issues/2423
-if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
+if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.9; fi
 
 echo
 cp ${SRC}.c ${SRC}.cpp
