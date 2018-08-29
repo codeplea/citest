@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main()
 {
 
     printf("\n");
@@ -44,7 +44,7 @@ printf("language: ");
 #endif
 
     printf("pointer size: ");
-    printf("%d\n", sizeof(void*));
+    printf("%d\n", (int)sizeof(void*));
 
     printf("\n");
     return 0;

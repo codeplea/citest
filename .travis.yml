@@ -1,21 +1,6 @@
-language:
-  - c
-
 os:
   - linux
   - osx
 
-compiler:
-  - clang
-  - gcc
-
 script:
-  - mkdir buildc
-  - cd buildc
-  - cmake ..
-  - cmake --build .
-  - cd ..
-  - mkdir buildcxx
-  - cd buildcxx
-  - cmake -DFORCECXX=ON ..
-  - cmake --build .
+  - ./build.sh
