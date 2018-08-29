@@ -2,7 +2,6 @@
 
 
 image:
-  - ubuntu
   - Visual Studio 2013
   - Visual Studio 2015
   - Visual Studio 2017
@@ -11,14 +10,5 @@ platform:
   - x86
   - x64
 
-
 build_script:
-  - mkdir buildc
-  - cd buildc
-  - cmake ..
-  - cmake --build .
-  - cd ..
-  - mkdir buildcxx
-  - cd buildcxx
-  - cmake -DFORCECXX=ON ..
-  - cmake --build .
+  - cl id.c
