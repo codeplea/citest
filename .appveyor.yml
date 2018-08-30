@@ -2,31 +2,31 @@
 environment:
   matrix:
     - image: Visual Studio 2015
-      MATRIX: "VS"
+      MATRIX: "VS2015"
       CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2015
-      MATRIX: "VS"
+      MATRIX: "VS2015"
       CC: "cl.exe"
       platform: x64
 
     - image: Visual Studio 2017
-      MATRIX: "VS"
+      MATRIX: "VS2017"
       CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2017
-      MATRIX: "VS"
+      MATRIX: "VS2017"
       CC: "cl.exe"
       platform: x64
 
 
 init:
-  - if "%MATRIX%" == "VS" AND "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
-  - if "%MATRIX%" == "VS" AND "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" set VCARGUMENT=%PLATFORM%
-  - if "%MATRIX%" == "VS" AND "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" if "%PLATFORM%" == "x64" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - if "%MATRIX%" == "VS" AND "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" if "%PLATFORM%" == "x86" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+  - if "%MATRIX%" == "VS2015" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+  - if "%MATRIX%" == "VS2015" set VCARGUMENT=%PLATFORM%
+  - if "%MATRIX%" == "VS2017" if "%PLATFORM%" == "x64" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+  - if "%MATRIX%" == "VS2017" if "%PLATFORM%" == "x86" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
   - echo "%VCVARPATH% %VCARGUMENT%"
   - "%VCVARPATH% %VCARGUMENT%"
 
