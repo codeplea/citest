@@ -30,3 +30,6 @@ del ./id.exe
 del id.cpp
 
 ls
+
+ls "C:\Program Files\LLVM\bin"
+ls "C:\MinGW\bin"
