@@ -18,4 +18,5 @@ init:
   - "%VCVARPATH% %VCARGUMENT%"
 
 build_script:
-  - ps: "./build.ps1"
+  #- ps: "./build.ps1"
+  - ./build.bat
