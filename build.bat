@@ -1,3 +1,8 @@
+
+echo "%MATRIX_EVAL%"
+%MATRIX_EVAL%
+
+
 copy id.c id.cpp
 
 PATH
