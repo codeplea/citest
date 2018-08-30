@@ -43,8 +43,15 @@ printf("language: ");
     printf("c\n");
 #endif
 
-    printf("pointer size: ");
-    printf("%d\n", (int)sizeof(void*));
+    printf("arch: ");
+    if (sizeof(void*) == 4) {
+        printf("x86\n");
+    } else if (sizeof(void*) == 8) {
+        printf("x64\n");
+    } else {
+        printf("unknown\n");
+    }
+
 
     printf("\n");
     return 0;

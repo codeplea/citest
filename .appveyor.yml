@@ -12,12 +12,12 @@ environment:
       platform: x64
 
     - image: Visual Studio 2017
-      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat\""
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat"
       CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2017
-      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\""
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"
       CC: "cl.exe"
       platform: x64
 

@@ -9,7 +9,7 @@ id.exe
 del id.exe
 
 
-if 0 (
+if 0 == 1 (
 "C:\MinGW\bin\gcc.exe" id.c -o id.exe
 id.exe
 del id.exe
