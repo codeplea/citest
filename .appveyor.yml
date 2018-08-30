@@ -23,7 +23,7 @@ environment:
 
 
 init:
-  - dir /s "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC"
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
   - echo "%MATRIX_EVAL%"
   - "%MATRIX_EVAL%"
 
