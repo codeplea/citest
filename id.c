@@ -19,13 +19,13 @@ int main()
     printf("compiler: ");
 #if defined(_MSC_VER)
 #if _MSC_VER == 1800
-    printf("mvs 2013\n");
+    printf("msc 2013\n");
 #elif _MSC_VER == 1900
-    printf("mvs 2015\n");
+    printf("msc 2015\n");
 #elif _MSC_VER >= 1910 && _MSC_VER <= 1914
-    printf("mvs 2017\n");
+    printf("msc 2017\n");
 #else
-    printf("mvs unknown\n");
+    printf("msc unknown %d\n", _MSC_VER_);
 #endif
 #elif defined(__clang__)
     printf("clang-%d.%d\n", __clang_major__, __clang_minor__);
