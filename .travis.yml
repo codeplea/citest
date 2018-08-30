@@ -1,9 +1,8 @@
 language: c
 
-matrix:
-  include:
-    - os: linux
-    - os: osx
+os:
+  - linux
+  - osx
       osx_image: xcode8
 
 compiler:
