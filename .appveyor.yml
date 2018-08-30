@@ -11,6 +11,18 @@ environment:
       CC: "cl.exe"
       platform: x64
 
+    - image: Visual Studio 2015
+      MATRIX: "MINGW"
+      CC: "C:\MinGW\bin\gcc.exe"
+      CEXTRA: "-o id.exe"
+      platform: x86
+
+    - image: Visual Studio 2015
+      MATRIX: "MINGW"
+      CC: "C:\MinGW\bin\gcc.exe"
+      CEXTRA: "-o id.exe"
+      platform: x64
+
     - image: Visual Studio 2017
       MATRIX: "VS2017"
       CC: "cl.exe"
