@@ -25,7 +25,7 @@ int main()
 #elif _MSC_VER >= 1910 && _MSC_VER <= 1914
     printf("msc 2017\n");
 #else
-    printf("msc unknown %d\n", _MSC_VER_);
+    printf("msc unknown %d\n", _MSC_VER);
 #endif
 #elif defined(__clang__)
     printf("clang-%d.%d\n", __clang_major__, __clang_minor__);
