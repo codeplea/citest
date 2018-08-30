@@ -1,22 +1,26 @@
-# https://www.appveyor.com/docs/appveyor-yml/
 
+environment:
+  matrix:
+    - image: Visual Studio 2015
+      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat x86"
+      platform: x86
 
-image:
-    - Visual Studio 2015
-    - Visual Studio 2017
+    - image: Visual Studio 2015
+      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat x64"
+      platform: x64
 
-platform:
-  - x86
-  - x64
+    - image: Visual Studio 2017
+      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+      platform: x86
+
+    - image: Visual Studio 2017
+      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+      platform: x64
+
 
 init:
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" set VCARGUMENT=%PLATFORM%
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" if "%PLATFORM%" == "x64" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" if "%PLATFORM%" == "x86" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-  - echo "%VCVARPATH% %VCARGUMENT%"
-  - "%VCVARPATH% %VCARGUMENT%"
+  - echo "%MATRIX_EVAL%"
+  - "%MATRIX_EVAL%"
 
 build_script:
-  #- ps: "./build.ps1"
   - ./build.bat
