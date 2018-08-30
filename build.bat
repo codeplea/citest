@@ -2,9 +2,7 @@
 
 copy id.c id.cpp
 
-PATH
 echo "%CC%"
-%CC% --version
 
 %CC% id.c %CEXTRA%
 id.exe

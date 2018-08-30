@@ -13,6 +13,12 @@ environment:
       platform: x86
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      MATRIX_EVAL: "set PATH=C:\\Program Files\\LLVM\\bin"
+      CC: "clang"
+      CEXTRA: "-o id.exe"
+      platform: x86
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat\" x64"
       CC: "cl.exe"
       platform: x64
