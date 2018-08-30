@@ -2,45 +2,29 @@
 environment:
   matrix:
     - image: Visual Studio 2015
-      MATRIX: "VS2015"
+      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat\" x86"
       CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2015
-      MATRIX: "VS2015"
+      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat\" x64"
       CC: "cl.exe"
-      platform: x64
-
-    - image: Visual Studio 2015
-      MATRIX: "MINGW"
-      CC: "C:\\MinGW\\bin\\gcc.exe"
-      CEXTRA: "-o id.exe"
-      platform: x86
-
-    - image: Visual Studio 2015
-      MATRIX: "MINGW"
-      CC: "C:\\MinGW\\bin\\gcc.exe"
-      CEXTRA: "-o id.exe"
       platform: x64
 
     - image: Visual Studio 2017
-      MATRIX: "VS2017"
+      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat\""
       CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2017
-      MATRIX: "VS2017"
+      MATRIX_EVAL: "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\""
       CC: "cl.exe"
       platform: x64
 
 
 init:
-  - if "%MATRIX%" == "VS2015" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
-  - if "%MATRIX%" == "VS2015" set VCARGUMENT=%PLATFORM%
-  - if "%MATRIX%" == "VS2017" if "%PLATFORM%" == "x64" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - if "%MATRIX%" == "VS2017" if "%PLATFORM%" == "x86" set VCVARPATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-  - echo "%VCVARPATH% %VCARGUMENT%"
-  - "%VCVARPATH% %VCARGUMENT%"
+  - echo "%MATRIX_EVAL%"
+  - "%MATRIX_EVAL%"
 
 build_script:
   - ./build.bat

@@ -28,7 +28,7 @@ int main()
     printf("mvs unknown\n");
 #endif
 #elif defined(__clang__)
-    printf("clang\n");
+    printf("clang-%d.%d\n", __clang_major__, __clang_minor__);
 #elif defined(__GNUC__)
     printf("gcc-%d.%d\n", __GNUC__, __GNUC_MINOR__);
 #else
