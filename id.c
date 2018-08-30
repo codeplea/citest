@@ -30,7 +30,7 @@ int main()
 #elif defined(__clang__)
     printf("clang\n");
 #elif defined(__GNUC__)
-    printf("gcc-%s.%s\n", __GNUC__, __GNUC_MINOR__);
+    printf("gcc-%d.%d\n", __GNUC__, __GNUC_MINOR__);
 #else
     printf("unknown\n");
 #endif
