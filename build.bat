@@ -1,5 +1,6 @@
 copy id.c id.cpp
 
+PATH
 echo "%CC%"
 %CC% --version
 
