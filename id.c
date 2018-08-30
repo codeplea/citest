@@ -22,7 +22,7 @@ int main()
     printf("msc 2013\n");
 #elif _MSC_VER == 1900
     printf("msc 2015\n");
-#elif _MSC_VER >= 1910 && _MSC_VER <= 1914
+#elif _MSC_VER >= 1910 && _MSC_VER <= 1915
     printf("msc 2017\n");
 #else
     printf("msc unknown %d\n", _MSC_VER);

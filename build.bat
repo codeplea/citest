@@ -1,5 +1,8 @@
 copy id.c id.cpp
 
+echo "%CC%"
+%CC% --version
+
 %CC% id.c %CEXTRA%
 id.exe
 del id.exe
