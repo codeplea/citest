@@ -24,7 +24,7 @@ environment:
 
 init:
   - echo "%MATRIX_EVAL%"
-  - "%MATRIX_EVAL%"
+  - "%MATRIX_EVAL% %XXX%"
 
 build_script:
   - ./build.bat
