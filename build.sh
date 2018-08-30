@@ -11,7 +11,3 @@ ${CC} -Wall -Wextra ${SRC}.cpp -o ${SRC}; ./${SRC}; rm ${SRC}
 rm ${SRC}.cpp
 echo
 echo
-
-which gcc
-which clang
-ls -al /usr/bin
