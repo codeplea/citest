@@ -13,13 +13,13 @@ environment:
 
     - image: Visual Studio 2015
       MATRIX: "MINGW"
-      CC: "C:\MinGW\bin\gcc.exe"
+      CC: "C:\\MinGW\\bin\\gcc.exe"
       CEXTRA: "-o id.exe"
       platform: x86
 
     - image: Visual Studio 2015
       MATRIX: "MINGW"
-      CC: "C:\MinGW\bin\gcc.exe"
+      CC: "C:\\MinGW\\bin\\gcc.exe"
       CEXTRA: "-o id.exe"
       platform: x64
 
