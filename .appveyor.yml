@@ -2,19 +2,23 @@
 environment:
   matrix:
     - image: Visual Studio 2015
-      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat x86"
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat x86"
+      CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2015
-      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat x64"
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat x64"
+      CC: "cl.exe"
       platform: x64
 
     - image: Visual Studio 2017
-      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars32.bat"
+      CC: "cl.exe"
       platform: x86
 
     - image: Visual Studio 2017
-      MATRIX_EVAL: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+      MATRIX_EVAL: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"
+      CC: "cl.exe"
       platform: x64
 
 
