@@ -9,13 +9,13 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       MATRIX_EVAL: "set PATH=C:\\MinGW\\msys\\1.0\\local\\bin;C:\\MinGW\\msys\\1.0\\mingw\\bin;C:\\MinGW\\msys\\1.0\\bin;C:\\MinGW\\bin"
       CC: "gcc"
-      CEXTRA: "-o id.exe"
+      CEXTRA: "-o id.exe -liphlpapi -lws2_32 -Wall"
       platform: x86
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       MATRIX_EVAL: "set PATH=C:\\Program Files\\LLVM\\bin"
       CC: "clang"
-      CEXTRA: "-o id.exe"
+      CEXTRA: "-o id.exe -liphlpapi -lws2_32 -Wall"
       platform: x86
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
