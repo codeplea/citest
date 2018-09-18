@@ -1,58 +1,73 @@
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
+
+#include <winsock2.h>
+#include <iphlpapi.h>
+#include <ws2tcpip.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
-{
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "iphlpapi.lib")
 
-    printf("\n");
-    printf("os: ");
-#if defined(_WIN32)
-    printf("windows\n");
-#elif defined(__linux__)
-    printf("linux\n");
-#elif defined(__APPLE__)
-    printf("osx\n");
-#else
-    printf("unknown\n");
-#endif
+int main() {
 
-
-    printf("compiler: ");
-#if defined(_MSC_VER)
-#if _MSC_VER == 1800
-    printf("msc 2013\n");
-#elif _MSC_VER == 1900
-    printf("msc 2015\n");
-#elif _MSC_VER >= 1910 && _MSC_VER <= 1915
-    printf("msc 2017\n");
-#else
-    printf("msc unknown %d\n", _MSC_VER);
-#endif
-#elif defined(__clang__)
-    printf("clang-%d.%d\n", __clang_major__, __clang_minor__);
-#elif defined(__GNUC__)
-    printf("gcc-%d.%d\n", __GNUC__, __GNUC_MINOR__);
-#else
-    printf("unknown\n");
-#endif
-
-
-printf("language: ");
-#ifdef __cplusplus
-    printf("c++\n");
-#else
-    printf("c\n");
-#endif
-
-    printf("arch: ");
-    if (sizeof(void*) == 4) {
-        printf("x86\n");
-    } else if (sizeof(void*) == 8) {
-        printf("x64\n");
-    } else {
-        printf("unknown\n");
+    WSADATA d;
+    if (WSAStartup(MAKEWORD(2, 2), &d)) {
+        printf("Failed to initialize.\n");
+        return -1;
     }
 
 
-    printf("\n");
+    DWORD asize = 20000;
+    PIP_ADAPTER_ADDRESSES addresses;
+    do {
+        addresses = malloc(asize);
+
+        if (!addresses) {
+            printf("Couldn't allocate %d bytes for addresses.\n", asize);
+            WSACleanup();
+            return -1;
+        }
+
+        int r = GetAdaptersAddresses(AF_UNSPEC, GAA_FLAG_INCLUDE_PREFIX, 0, addresses, &asize);
+        if (r == ERROR_BUFFER_OVERFLOW) {
+            printf("GetAdaptersAddresses wants %d bytes.\n", asize);
+            free(addresses);
+        } else if (r == ERROR_SUCCESS) {
+            break;
+        } else {
+            printf("Error from GetAdaptersAddresses: %d\n", r);
+            free(addresses);
+            WSACleanup();
+            return -1;
+        }
+    } while (!addresses);
+
+
+    PIP_ADAPTER_ADDRESSES address = addresses;
+    while (address) {
+        printf("\nAdapter name: %wS\n", address->FriendlyName);
+
+        PIP_ADAPTER_UNICAST_ADDRESS add = address->FirstUnicastAddress;
+        while (add) {
+            printf("\t%s", add->Address.lpSockaddr->sa_family == AF_INET ? "IPv4" : "IPv6");
+
+            int bsize = 100;
+            char ap[bsize];
+
+            getnameinfo(add->Address.lpSockaddr, add->Address.iSockaddrLength, ap, sizeof(ap), 0, 0, NI_NUMERICHOST);
+            printf("\t%s\n", ap);
+
+            add = add->Next;
+        }
+
+        address = address->Next;
+    }
+
+
+    free(addresses);
+    WSACleanup();
     return 0;
 }
