@@ -23,17 +23,17 @@ int main() {
     DWORD asize = 20000;
     PIP_ADAPTER_ADDRESSES addresses;
     do {
-        addresses = malloc(asize);
+        addresses = (PIP_ADAPTER_ADDRESSES)malloc(asize);
 
         if (!addresses) {
-            printf("Couldn't allocate %d bytes for addresses.\n", asize);
+            printf("Couldn't allocate %ld bytes for addresses.\n", asize);
             WSACleanup();
             return -1;
         }
 
         int r = GetAdaptersAddresses(AF_UNSPEC, GAA_FLAG_INCLUDE_PREFIX, 0, addresses, &asize);
         if (r == ERROR_BUFFER_OVERFLOW) {
-            printf("GetAdaptersAddresses wants %d bytes.\n", asize);
+            printf("GetAdaptersAddresses wants %ld bytes.\n", asize);
             free(addresses);
         } else if (r == ERROR_SUCCESS) {
             break;
@@ -48,14 +48,13 @@ int main() {
 
     PIP_ADAPTER_ADDRESSES address = addresses;
     while (address) {
-        printf("\nAdapter name: %wS\n", address->FriendlyName);
+        printf("\nAdapter name: %S\n", address->FriendlyName);
 
         PIP_ADAPTER_UNICAST_ADDRESS add = address->FirstUnicastAddress;
         while (add) {
             printf("\t%s", add->Address.lpSockaddr->sa_family == AF_INET ? "IPv4" : "IPv6");
 
-            int bsize = 100;
-            char ap[bsize];
+            char ap[100];
 
             getnameinfo(add->Address.lpSockaddr, add->Address.iSockaddrLength, ap, sizeof(ap), 0, 0, NI_NUMERICHOST);
             printf("\t%s\n", ap);
